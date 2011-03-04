@@ -38,6 +38,7 @@ class Scaffolder():
 
 
   def generate_views(self):
+    # all the imports needed views
     views_content = VIEWS_IMPORTS
     
     for model_instance in self.model_instances:
@@ -53,9 +54,11 @@ class Scaffolder():
     
     
   def generate_templates(self):
-    pass
-    
-    
+    for model_instance in self.model_instances:
+      print TEMPLATES_CREATE  %  { 'modelClass' : model_instance._meta.object_name }
+      print TEMPLATES_LIST  %  { 'modelClass' : model_instance._meta.object_name }    
+      print TEMPLATES_EDIT  %  { 'modelClass' : model_instance._meta.object_name } 
+      print TEMPLATES_VIEW  %  { 'modelClass' : model_instance._meta.object_name,  'model' : model_instance._meta.object_name.lower() }       
     
   def generate_forms(self):
     

@@ -134,3 +134,81 @@ def view_%(model)s(request, id):
 
 
 
+TEMPLATES_CREATE = """
+{%% extends "base.html" %%}
+
+{%% block title %%} %(modelClass)s - Create {%% endblock %%}
+
+{%% block heading %%}  %(modelClass)s - Create  {%% endblock %%}
+{%% block content %%} 
+<table>
+<form action="" method="POST"> {%% csrf_token %%}
+  {{form}}
+  <tr>
+    <td colspan="2" align="right"><input type="submit" value="Create"/></td>
+  </tr>
+</form>
+</table>
+{%% endblock %%}
+"""
+
+TEMPLATES_LIST = """
+{%% extends "base.html" %%}
+
+{%% block title %%} %(modelClass)s - List {%% endblock %%}
+
+{%% block heading %%}  %(modelClass)s - List  {%% endblock %%}
+{%% block content %%} 
+<table>
+{%% for item in list_items %%}
+  <tr><td>forloop.counter</td><td> {{item}} </td></tr>
+{%% endfor %%}
+</table>
+
+{%% if list_items.has_previous %%}
+    <a href="?page={{ list_items.previous_page_number }}">Previous</a>
+{%% endif %%}
+
+<span class="current">
+    Page {{ list_items.number }} of {{ list_items.paginator.num_pages }}.
+</span>
+
+{%% if list_items.has_next %%}
+        <a href="?page={{ list_items.next_page_number }}">Previous</a>
+{%% endif %%}
+
+{%% endblock %%}
+"""
+
+
+TEMPLATES_EDIT = """
+{%% extends "base.html" %%}
+
+{%% block title %%} %(modelClass)s - Edit {%% endblock %%}
+
+{%% block heading %%}  %(modelClass)s - Edit  {%% endblock %%}
+{%% block content %%} 
+<table>
+<form action="" method="POST"> {%% csrf_token %%}
+  {{form}}
+  <tr>
+    <td colspan="2" align="right"><input type="submit" value="Save"/></td>
+  </tr>
+</form>
+</table>
+{%% endblock %%}
+"""
+
+TEMPLATES_VIEW = """
+{%% extends "base.html" %%}
+
+{%% block title %%} %(modelClass)s - View {%% endblock %%}
+
+{%% block heading %%}  %(modelClass)s - View  {%% endblock %%}
+{%% block content %%} 
+<table>
+{{ %(model)s_instance }}
+</table>
+{%% endblock %%}
+"""
+
