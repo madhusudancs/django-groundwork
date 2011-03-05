@@ -1,0 +1,9 @@
+This app does all the groundwork needed to get an app up and running..
+Usage:
+
+Include django-groundwork in your list of installed apps.
+Create the models.py file for your app with all the fields specified.
+
+Run the following command
+
+$ manage.py groundwork
