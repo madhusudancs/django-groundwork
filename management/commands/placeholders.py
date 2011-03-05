@@ -100,7 +100,7 @@ def list_%(model)s(request):
   except (EmptyPage, InvalidPage):
     list_items = paginator.page(paginator.num_pages)
 
-  t = get_template('%(app)s/create_%(model)s.html')
+  t = get_template('%(app)s/list_%(model)s.html')
   c = RequestContext(request,locals())
   return HttpResponse(t.render(c))
 
@@ -131,7 +131,6 @@ def view_%(model)s(request, id):
   c=RequestContext(request,locals())
   return HttpResponse(t.render(c))
 """
-
 
 
 TEMPLATES_CREATE = """
