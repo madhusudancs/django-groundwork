@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
+from django.db import models
 from placeholders import *
 import os
 
@@ -123,10 +124,8 @@ class Command(BaseCommand):
 
             model_names = args[1:] # Models which need to be scaffolded will follow
 
-            exec( "from %s.models import *" %(app) )
-
-            model_instances = [ eval(x) for x in model_names]
-
+            model_instances = [ models.get_model(app, x) for x in model_names ]
+    
             Scaffolder(app, model_instances)
 
         except:
