@@ -100,7 +100,7 @@ def list_%(model)s(request):
 
     try:
         list_items = paginator.page(page)
-    except (EmptyPage, InvalidPage):
+    except :
         list_items = paginator.page(paginator.num_pages)
 
     t = get_template('%(app)s/list_%(model)s.html')
